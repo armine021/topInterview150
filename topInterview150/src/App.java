@@ -16,5 +16,17 @@ class Solution {
             k--;
         }
     }
+
+// 27. Remove Element
+    public int removeElement(int[] nums, int val) {
+        
+    }
+
+
+
+
+
+
+
 }
 
