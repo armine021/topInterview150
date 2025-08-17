@@ -19,7 +19,15 @@ class Solution {
 
 // 27. Remove Element
     public int removeElement(int[] nums, int val) {
-        
+        int k = 0; // index for where to write the next valid element
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i]; // keep this element
+                k++;
+            }
+        }
+        return k; // number of elements not equal to val
     }
 
 
