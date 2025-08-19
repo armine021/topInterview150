@@ -30,6 +30,11 @@ class Solution {
         return k; // number of elements not equal to val
     }
 
+// 26. Remove Duplicates from Sorted Array
+    public int removeDuplicates(int[] nums) {
+        
+    }
+
 
 
 
