@@ -32,7 +32,16 @@ class Solution {
 
 // 26. Remove Duplicates from Sorted Array
     public int removeDuplicates(int[] nums) {
-        
+        if (nums.length == 0) return 0;
+
+        int k = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[k - 1]) {
+                if (i != k) nums[k] = nums[i]; // only write if needed
+                k++;
+            }
+        }
+        return k;
     }
 
 
