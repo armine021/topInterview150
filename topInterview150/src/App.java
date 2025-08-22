@@ -46,7 +46,18 @@ class Solution {
 
 // 80. Remove Duplicates from Sorted Array II
     public int removeDuplicates(int[] nums) {
-        
+        if (nums.length <= 2) return nums.length;
+
+        int k = 2; // Start from 3rd position
+        for (int i = 2; i < nums.length; i++) {
+            // Compare current element with nums[k-2]
+            // If it's the same, that means we already have 2 copies, skip it
+            if (nums[i] != nums[k - 2]) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+        return k;
     }
 }
 
