@@ -101,9 +101,21 @@ class Solution {
 
 // 121. Best Time to Buy and Sell Stock
     public int maxProfit(int[] prices) {
-        
+        int minPrice = Integer.MAX_VALUE; // track lowest price so far
+        int maxProfit = 0; // track best profit
+
+        for (int price : prices) {
+            // update minimum price
+            if (price < minPrice) {
+                minPrice = price;
+            }
+            // check profit if sold today
+            else if (price - minPrice > maxProfit) {
+                maxProfit = price - minPrice;
+            }
+        }
+
+        return maxProfit;
     }
-
-
 }
 
