@@ -117,5 +117,11 @@ class Solution {
 
         return maxProfit;
     }
+
+// 122. Best Time to Buy and Sell Stock II
+    public int maxProfit2(int[] prices) {
+        
+    }
+
 }
 
