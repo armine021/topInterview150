@@ -147,5 +147,10 @@ class Solution {
         return false;
     }
 
+// 45. Jump Game II
+    public int jump(int[] nums) {
+
+    }
+
 }
 
