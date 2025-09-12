@@ -149,7 +149,26 @@ class Solution {
 
 // 45. Jump Game II
     public int jump(int[] nums) {
+        int n = nums.length;
+        if (n == 1) return 0; // No jumps needed if we are already at the last index.
 
+        int jumps = 0; // Number of jumps made
+        int currentReach = 0; // Current range covered by jumps
+        int maxReach = 0; // Farthest we can go with current and next jumps
+
+        for (int i = 0; i < n - 1; i++) {
+            maxReach = Math.max(maxReach, i + nums[i]); // Update max reachable index
+
+            // If we reach the end of the current jump's coverage
+            if (i == currentReach) {
+                jumps++; // Increment the jump counter
+                currentReach = maxReach; // Update the range for the next jump
+
+                // If we can already reach the end, break out of the loop
+                if (currentReach >= n - 1) break;
+            }
+        }
+        return jumps;
     }
 
 }
