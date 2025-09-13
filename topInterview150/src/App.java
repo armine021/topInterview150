@@ -171,5 +171,11 @@ class Solution {
         return jumps;
     }
 
+// 274. H-Index
+    public int hIndex(int[] citations) {
+        
+    }
+}
+
 }
 
