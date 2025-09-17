@@ -186,5 +186,23 @@ class Solution {
     }
 }
 
+// 380. Insert Delete GetRandom O(1)
+
+    public RandomizedSet() {
+        
+    }
+    
+    public boolean insert(int val) {
+        
+    }
+    
+    public boolean remove(int val) {
+        
+    }
+    
+    public int getRandom() {
+        
+    }
+
 }
 
