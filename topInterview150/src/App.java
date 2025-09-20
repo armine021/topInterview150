@@ -231,7 +231,23 @@ class Solution {
 // 238. Product of Array Except Self
 
     public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] output = new int[n];
         
+        // calculate left products
+        output[0] = 1; // No element on the left of the first element
+        for (int i = 1; i < n; i++) {
+            output[i] = output[i - 1] * nums[i - 1];
+        }
+        
+        // calculate right products and update output array
+        int rightProduct = 1; // No element on the right of the last element
+        for (int i = n - 1; i >= 0; i--) {
+            output[i] = output[i] * rightProduct;
+            rightProduct *= nums[i];
+        }
+        
+        return output;
     }
 }
 
