@@ -252,7 +252,24 @@ class Solution {
 
 // 134. Gas Station
     public int canCompleteCircuit(int[] gas, int[] cost) {
-        
+        int totalTank = 0;
+        int currTank = 0;
+        int startingStation = 0;
+
+        for (int i = 0; i < gas.length; i++) {
+            int diff = gas[i] - cost[i];
+            totalTank += diff;
+            currTank += diff;
+
+            // If we can't reach the next station
+            if (currTank < 0) {
+                // Start from the next station
+                startingStation = i + 1;
+                currTank = 0;
+            }
+        }
+
+        return totalTank >= 0 ? startingStation : -1;
     }
 
 
