@@ -300,6 +300,36 @@ class Solution {
     }
 
 // 42. Trapping Rain Water
+    public int trap(int[] height) {
+        if (height.length <= 1) {
+            return 0;
+        }
+        
+        // set up variables
+        int totalRain = 0;
+        int frontPointer = 0;
+        int backPointer = height.length - 1;
+        int frontMax = height[frontPointer];
+        int backMax = height[backPointer];
+
+        // reset front and back pointers
+        frontPointer = 0;
+        backPointer = height.length - 1;
+
+        while (frontPointer < backPointer) {
+            if (frontMax < backMax) {
+                frontPointer += 1;
+                frontMax = Math.max(frontMax, height[frontPointer]);
+                totalRain += frontMax - height[frontPointer];
+            } else {
+                backPointer -= 1;
+                backMax = Math.max(backMax, height[backPointer]);
+                totalRain += backMax - height[backPointer];
+            }
+        }
+        return totalRain;
+
+    }
 
 }
 
