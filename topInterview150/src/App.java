@@ -379,5 +379,11 @@ class Solution {
 
         return roman.toString();
     }
+
+// 58. Length of Last Word
+    public int lengthOfLastWord(String s) {
+        
+    }
+
 }
 
