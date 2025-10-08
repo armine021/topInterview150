@@ -399,5 +399,10 @@ class Solution {
         return length;
     }
 
+// 14. Longest Common Prefix
+    public String longestCommonPrefix(String[] strs) {
+        
+    }
+
 }
 
