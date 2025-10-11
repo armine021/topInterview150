@@ -417,6 +417,22 @@ class Solution {
     }
 
 // 151. Reverse Words in a String
+    public String reverseWords(String s) {
+        // trim to remove spaces and split
+        s = s.trim();
+        String[] words = s.split("\\s+");
+
+        // rebuild string in reverse
+        StringBuilder sb = new StringBuilder();
+        for (int i = words.length - 1; i >= 0; i--) {
+            sb.append(words[i]);
+            if (i != 0) {
+                sb.append(" ");
+            }
+        }
+
+        return sb.toString();
+    }
 
 }
 
