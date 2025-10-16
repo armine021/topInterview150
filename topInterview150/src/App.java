@@ -473,7 +473,24 @@ class Solution {
 
 // 28. Find the Index of the First Occurrence in a String
     public int strStr(String haystack, String needle) {
-        
+        // literally one liner calling a method in Java
+        // return haystack.indexOf(needle);
+        // building it out manually though...
+        int hLen = haystack.length();
+        int nLen = needle.length();
+
+        if (nLen == 0) return 0; // per convention
+        if (nLen > hLen) return -1;
+
+        for (int i = 0; i <= hLen - nLen; i++) {
+            int j = 0;
+            while (j < nLen && haystack.charAt(i + j) == needle.charAt(j)) {
+                j++;
+            }
+            if (j == nLen) return i;
+        }
+
+        return -1;
     }
 
 
