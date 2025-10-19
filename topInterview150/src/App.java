@@ -494,8 +494,44 @@ class Solution {
     }
 
     // 68. Text Justification
-        public List<String> fullJustify(String[] words, int maxWidth) {
+    public List<String> fullJustify(String[] words, int maxWidth) {
+        List<String> result = new ArrayList<>();
         
+        int index = 0;
+        while (index < words.length) {
+            // Step 1: Determine how many words fit into the current line
+            int lineStart = index;
+            int lineLength = words[index].length();
+            index++;
+            while (index < words.length && lineLength + 1 + words[index].length() <= maxWidth) {
+                lineLength += 1 + words[index].length(); // 1 for space
+                index++;
+            }
+            
+            // Step 2: Build the line
+            StringBuilder line = new StringBuilder();
+            int numberOfWords = index - lineStart;
+            boolean isLastLine = (index == words.length);
+
+            if (numberOfWords == 1 || isLastLine) {
+                // Left-justify (only one word or last line)
+                line.append(words[lineStart]);
+                for (int i = lineStart + 1; i < index; i++) {
+                    line.append(" ").append(words[i]);
+                }
+                // Fill the rest with spaces
+                while (line.length() < maxWidth) {
+                    line.append(" ");
+                }
+            } else {
+                // Fully justify
+                
+            }
+
+            result.add(line.toString());
+        }
+        
+        return result;
     }
 
 }
