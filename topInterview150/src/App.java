@@ -1,3 +1,5 @@
+import java.util.*;
+
 // 88. Merge Sorted Array
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -45,7 +47,7 @@ class Solution {
     }
 
 // 80. Remove Duplicates from Sorted Array II
-    public int removeDuplicates(int[] nums) {
+    public int removeDuplicatesII(int[] nums) {
         if (nums.length <= 2) return nums.length;
 
         int k = 2; // Start from 3rd position
@@ -184,14 +186,13 @@ class Solution {
         
         return h;
     }
-}
 
 // 380. Insert Delete GetRandom O(1)
     private List<Integer> list;
     private Map<Integer, Integer> map;
     private Random rand;
 
-    public RandomizedSet() {
+    public void RandomizedSet() {
         list = new ArrayList<>();
         map = new HashMap<>();
         rand = new Random();
@@ -496,18 +497,18 @@ class Solution {
     // 68. Text Justification
     public List<String> fullJustify(String[] words, int maxWidth) {
         List<String> result = new ArrayList<>();
-        
         int index = 0;
+
         while (index < words.length) {
-            // Step 1: Determine how many words fit into the current line
+            // Step 1: Determine how many words fit in the current line
             int lineStart = index;
             int lineLength = words[index].length();
             index++;
             while (index < words.length && lineLength + 1 + words[index].length() <= maxWidth) {
-                lineLength += 1 + words[index].length(); // 1 for space
+                lineLength += 1 + words[index].length(); // add space + word
                 index++;
             }
-            
+
             // Step 2: Build the line
             StringBuilder line = new StringBuilder();
             int numberOfWords = index - lineStart;
@@ -519,18 +520,36 @@ class Solution {
                 for (int i = lineStart + 1; i < index; i++) {
                     line.append(" ").append(words[i]);
                 }
-                // Fill the rest with spaces
+                // Fill remaining spaces
                 while (line.length() < maxWidth) {
                     line.append(" ");
                 }
             } else {
                 // Fully justify
-                
+                int totalChars = 0;
+                for (int i = lineStart; i < index; i++) {
+                    totalChars += words[i].length();
+                }
+
+                int totalSpaces = maxWidth - totalChars;
+                int gaps = numberOfWords - 1;
+                int spacesPerGap = totalSpaces / gaps;
+                int extraSpaces = totalSpaces % gaps;
+
+                for (int i = lineStart; i < index; i++) {
+                    line.append(words[i]);
+                    if (i < index - 1) { // not last word
+                        int spacesToApply = spacesPerGap + (i - lineStart < extraSpaces ? 1 : 0);
+                        for (int s = 0; s < spacesToApply; s++) {
+                            line.append(" ");
+                        }
+                    }
+                }
             }
 
             result.add(line.toString());
         }
-        
+
         return result;
     }
 
