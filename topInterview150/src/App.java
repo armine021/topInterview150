@@ -580,5 +580,9 @@ class Solution {
         return true;
     }
 
+    // 392. Is Subsequence
+    public boolean isSubsequence(String s, String t) {
+        
+    }
 }
 
