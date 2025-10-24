@@ -581,8 +581,30 @@ class Solution {
     }
 
     // 392. Is Subsequence
-    public boolean isSubsequence(String s, String t) {
-        
+    public boolean isPalindrome(String s) {
+        // lowercase the whole string
+        s = s.toLowerCase();
+
+        // use regex to remove anything except alpha-numerics
+        s = s.replaceAll("[^a-z0-9]", "");
+
+        // set up point for end (length - 1)
+        int rearIndex = (s.length() - 1);
+
+        // string ABCBA, length = 5, last position = 4, length/2 = 5/2 = 2 per Java int rules; middle letter of odd length is at length/2; , don't want to compare the middle char
+        // string ABCCBA, length/2 = 6/2 = 3, don't want to compare that char
+        // iterate through each character in the string up to and including (length/2 - 1)
+        for (int i = 0; i <= (s.length() - 1); i++) {
+            
+
+
+            // if char at i != char at (end - i), return false
+            if (s.charAt(i) != s.charAt(rearIndex - i)) {
+                return false;
+            }
+        }
+        // every character matches, so return true
+        return true;
     }
 }
 
