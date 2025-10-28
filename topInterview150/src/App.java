@@ -609,8 +609,28 @@ class Solution {
 
 // 167. Two Sum II - Input Array Is Sorted
     public int[] twoSum(int[] numbers, int target) {
-        
-    }
+        int indexOne = 1;
+        int indexTwo = numbers.length;
 
+        // GOAL: find the 2 correct indexes
+        while (indexOne < indexTwo) {
+            // calculate the current sum
+            int currentSum = numbers[indexOne - 1] + numbers[indexTwo - 1];
+
+            // if target is met, return the indices
+            if (currentSum == target) {
+                return new int[]{indexOne, indexTwo};
+            // else if current sum is too low, move the left pointer up
+            } else if (currentSum < target) {
+                indexOne++;
+            // else move the right pointer down
+            } else {
+                indexTwo--;
+            }
+        }
+
+        // return empty array if no answer is found (should be impossible per problem setup)
+        return new int[]{};
+    }
 }
 
