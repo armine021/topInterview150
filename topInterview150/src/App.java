@@ -634,7 +634,31 @@ class Solution {
     }
 
 // 11. Container With Most Water
+    public int maxArea(int[] height) {
+        // Brute force: calculate the max area at each possible left/right pointer
 
+        // put a pointer at the front and back
+        int front = 0;
+        int back = height.length - 1;
+        int maxArea = 0;
+
+        // for loop, iterate through n/2 (double check math for < <= >)
+        while (front < back) {
+            int tryArea = (back - front) * Math.min(height[front], height[back]);
+            maxArea = Math.max(maxArea, tryArea);
+
+            // if front is smaller, move up 1 spot
+            if (height[front] < height[back]) {
+                front += 1;                
+            // else move back back 1 spot
+            } else {
+                back -= 1;                
+            }
+        }
+
+        // return maxArea
+        return maxArea;
+    }
 
 }
 
