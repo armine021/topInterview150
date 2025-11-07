@@ -723,5 +723,10 @@ class Solution {
         return (minLen == Integer.MAX_VALUE) ? 0 : minLen;
     }
 
+// 3. Longest Substring Without Repeating Characters
+    public int lengthOfLongestSubstring(String s) {
+        
+    }
+
 }
 
