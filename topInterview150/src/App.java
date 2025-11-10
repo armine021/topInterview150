@@ -744,5 +744,11 @@ class Solution {
         return maxLen;
     }
 
+    // 30. Substring with Concatenation of All Words
+        public List<Integer> findSubstring(String s, String[] words) {
+        
+    }
+
+
 }
 
