@@ -745,8 +745,21 @@ class Solution {
     }
 
     // 30. Substring with Concatenation of All Words
-        public List<Integer> findSubstring(String s, String[] words) {
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> result = new ArrayList<>();
         
+        // handle edge cases
+        
+        // initialize variables and word frequency map
+        
+        // loop over possible starting offsets
+        
+        // use sliding window to track valid word sequences
+        
+        // update window and record valid starting indices
+        
+        // return result
+        return result;
     }
 
 
