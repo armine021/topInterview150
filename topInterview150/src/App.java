@@ -581,7 +581,7 @@ class Solution {
     }
 
     // 392. Is Subsequence
-    public boolean isPalindrome(String s) {
+    public boolean isPalindrome2(String s) {
         // lowercase the whole string
         s = s.toLowerCase();
 
@@ -662,7 +662,6 @@ class Solution {
 
 // 15. 3Sum
 
-    public List<List<Integer>> threeSum(int[] nums) {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if (nums == null || nums.length < 3) return result;
@@ -749,19 +748,59 @@ class Solution {
         List<Integer> result = new ArrayList<>();
         
         // handle edge cases
+        if (s == null || words == null || words.length == 0) return result;
+        int wordLen = words[0].length();
+        int totalWords = words.length;
+        int windowLen = wordLen * totalWords;
+        if (s.length() < windowLen) return result;
         
         // initialize variables and word frequency map
-        
+        Map<String, Integer> freq = new HashMap<>();
+        for (String w : words) freq.put(w, freq.getOrDefault(w, 0) + 1);
+
         // loop over possible starting offsets
-        
-        // use sliding window to track valid word sequences
-        
-        // update window and record valid starting indices
-        
-        // return result
+        for (int offset = 0; offset < wordLen; offset++) {
+
+            // use sliding window to track valid word sequences
+            int left = offset;
+            int count = 0;
+            Map<String, Integer> window = new HashMap<>();
+
+            for (int right = offset; right + wordLen <= s.length(); right += wordLen) {
+                String word = s.substring(right, right + wordLen);
+
+                // if it's a valid word, add it to the window
+                if (freq.containsKey(word)) {
+                    window.put(word, window.getOrDefault(word, 0) + 1);
+                    count++;
+
+                    // shrink window if word appears too many times
+                    while (window.get(word) > freq.get(word)) {
+                        String leftWord = s.substring(left, left + wordLen);
+                        window.put(leftWord, window.get(leftWord) - 1);
+                        left += wordLen;
+                        count--;
+                    }
+
+                    // update window and record valid starting indices
+                    if (count == totalWords) {
+                        result.add(left);
+                        String leftWord = s.substring(left, left + wordLen);
+                        window.put(leftWord, window.get(leftWord) - 1);
+                        left += wordLen;
+                        count--;
+                    }
+                } else {
+                    // reset window if invalid word encountered
+                    window.clear();
+                    count = 0;
+                    left = right + wordLen;
+                }
+            }
+        }
+
         return result;
     }
 
 
 }
-
