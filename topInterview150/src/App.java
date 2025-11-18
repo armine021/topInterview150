@@ -849,4 +849,9 @@ class Solution {
         return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
     }
 
+    // 36. Valid Sudoku
+    public boolean isValidSudoku(char[][] board) {
+        
+    }
+
 }
