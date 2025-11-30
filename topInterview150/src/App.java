@@ -1010,6 +1010,46 @@ class Solution {
 
     // 289. Game of Life
     public void gameOfLife(int[][] board) {
-        
+        int m = board.length, n = board[0].length;
+        int[] dirs = {-1, 0, 1};
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int liveNeighbors = 0;
+
+                // Count live neighbors (use Math.abs to read original states)
+                for (int dx : dirs) {
+                    for (int dy : dirs) {
+                        if (dx == 0 && dy == 0) continue;
+                        int x = i + dx, y = j + dy;
+                        if (x >= 0 && x < m && y >= 0 && y < n) {
+                            if (Math.abs(board[x][y]) == 1) {
+                                liveNeighbors++;
+                            }
+                        }
+                    }
+                }
+
+                // Rule applications using encoded states
+                if (board[i][j] == 1) {
+                    if (liveNeighbors < 2 || liveNeighbors > 3) {
+                        board[i][j] = -1; // live -> dead
+                    }
+                } else { // board[i][j] == 0
+                    if (liveNeighbors == 3) {
+                        board[i][j] = 2; // dead -> live
+                    }
+                }
+            }
+        }
+
+        // Final normalization
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == -1) board[i][j] = 0;
+                else if (board[i][j] == 2) board[i][j] = 1;
+            }
+        }
     }
+
 }
