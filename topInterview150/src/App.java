@@ -1052,4 +1052,9 @@ class Solution {
         }
     }
 
+// 383. Ransom Note
+    public boolean canConstruct(String ransomNote, String magazine) {
+        
+    }
+
 }
