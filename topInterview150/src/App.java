@@ -1054,7 +1054,21 @@ class Solution {
 
 // 383. Ransom Note
     public boolean canConstruct(String ransomNote, String magazine) {
-        
+        int[] count = new int[26];
+
+        // Count letters in magazine
+        for (char c : magazine.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        // Try to use letters for ransomNote
+        for (char c : ransomNote.toCharArray()) {
+            if (--count[c - 'a'] < 0) {
+                return false;  // used more than available
+            }
+        }
+
+        return true;
     }
 
 }
