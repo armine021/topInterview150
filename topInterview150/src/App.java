@@ -1071,4 +1071,8 @@ class Solution {
         return true;
     }
 
+// 205. Isomorphic Strings
+    public boolean isIsomorphic(String s, String t) {
+        
+    }
 }
