@@ -1093,4 +1093,11 @@ class Solution {
 
         return true;
     }
+
+
+// 290. Word Pattern
+    public boolean wordPattern(String pattern, String s) {
+        
+    }
+
 }
