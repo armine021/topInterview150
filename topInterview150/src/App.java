@@ -1097,7 +1097,36 @@ class Solution {
 
 // 290. Word Pattern
     public boolean wordPattern(String pattern, String s) {
+        String[] words = s.split(" ");
         
+        if (pattern.length() != words.length) {
+            return false;
+        }
+        
+        Map<Character, String> charToWord = new HashMap<>();
+        Map<String, Character> wordToChar = new HashMap<>();
+        
+        for (int i = 0; i < pattern.length(); i++) {
+            char c = pattern.charAt(i);
+            String w = words[i];
+            
+            if (charToWord.containsKey(c)) {
+                // mapping must match the existing one
+                if (!charToWord.get(c).equals(w)) {
+                    return false;
+                }
+            } else {
+                // if word is already mapped to another character → fail
+                if (wordToChar.containsKey(w)) {
+                    return false;
+                }
+                // add the new mapping both ways
+                charToWord.put(c, w);
+                wordToChar.put(w, c);
+            }
+        }
+        
+        return true;
     }
 
 }
