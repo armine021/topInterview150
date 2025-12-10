@@ -1129,4 +1129,9 @@ class Solution {
         return true;
     }
 
+// 242. Valid Anagram
+    public boolean isAnagram(String s, String t) {
+        
+    }
+
 }
