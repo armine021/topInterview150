@@ -1131,7 +1131,45 @@ class Solution {
 
 // 242. Valid Anagram
     public boolean isAnagram(String s, String t) {
-        
+        // if the strings are different lengths, return false
+        if (s.length() != t.length()) {
+                System.out.println("different lengths");
+                return false;
+        }
+
+        // convert each string to a character array
+        char[] s_array = new char[s.length()];
+        char[] t_array = new char[t.length()];
+
+        for (int i=0; i<s.length(); i++) {
+            s_array[i] = s.charAt(i);
+        }
+
+        for (int i=0; i<t.length(); i++) {
+            t_array[i] = t.charAt(i);
+        }
+
+        // sort each character array
+        Arrays.sort(s_array); 
+        Arrays.sort(t_array); 
+
+        // find the maximum length
+        int max = 0;
+        if (s.length() >= t.length()) {
+            max = s.length();
+        } else {
+            max = t.length();
+        }
+
+        // iterate through the characters and compare if they're the same
+        for (int i = 0; i <= (max - 1); i++) {
+            // System.out.println("s entry at " + i + " is: " + s_array[i]);
+            // System.out.println("t entry at " + i + " is: " + t_array[i]);
+            if (s_array[i] != t_array[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
