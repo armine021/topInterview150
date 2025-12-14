@@ -1172,4 +1172,8 @@ class Solution {
         return true;
     }
 
+// 49. Group Anagrams
+    public List<List<String>> groupAnagrams(String[] strs) {
+        
+    }
 }
