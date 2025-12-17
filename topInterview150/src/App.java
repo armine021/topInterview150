@@ -1189,4 +1189,10 @@ class Solution {
         // Return grouped anagrams
         return new ArrayList<>(map.values());
     }
+
+// 1. Two Sum
+    public int[] twoSum(int[] nums, int target) {
+        
+    }
+
 }
